@@ -9,7 +9,7 @@ from keras.utils import np_utils
 
 
 def load_model():
-    #  # (X_train, y_train), (X_test, y_test) = mnist.load_data()
+    # (X_train, y_train), (X_test, y_test) = mnist.load_data()
     X_train, y_train, X_test, y_test = printed_dataset()
 
     # reshaping image matrix
