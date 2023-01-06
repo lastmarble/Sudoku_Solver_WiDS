@@ -22,15 +22,11 @@ def load_model():
     X_train /= 255
     X_test /= 255
 
-    # print("Train matrix shape", X_train.shape)
-    # print("Test matrix shape", X_test.shape)
-
     # one-hot encoding
     n_classes = 10
-    # print("Shape before one-hot encoding: ", y_train.shape)
     Y_train = np_utils.to_categorical(y_train, n_classes)
     Y_test = np_utils.to_categorical(y_test, n_classes)
-    # print("Shape after one-hot encoding: ", Y_train.shape)
+    
     inputShape = (X_train.shape[1], X_train.shape[2], 1)
     # sequential model with 2 hidden layers
     model = Sequential()
