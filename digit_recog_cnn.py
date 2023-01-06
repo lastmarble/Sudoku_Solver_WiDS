@@ -5,14 +5,12 @@ from pillow_printed_digits import printed_dataset
 from keras.models import Sequential
 from keras.layers.core import Dense, Dropout, Activation
 from keras.utils import np_utils
+# from keras.datasets import mnist
 
 
 def load_model():
+    #  # (X_train, y_train), (X_test, y_test) = mnist.load_data()
     X_train, y_train, X_test, y_test = printed_dataset()
-    # print("X_train shape", X_train.shape)
-    # print("y_train shape", y_train.shape)
-    # print("X_test shape", X_test.shape)
-    # print("y_test shape", y_test.shape)
 
     # reshaping image matrix
     X_train = X_train.reshape(X_train.shape[0], X_train.shape[1], X_train.shape[2], 1)
@@ -64,8 +62,8 @@ def load_model():
                         batch_size=128, epochs=10,
                         verbose=2,
                         validation_data=(X_test, Y_test))
-    mnist_model = model
-    loss_and_accuracy = mnist_model.evaluate(X_test, Y_test, verbose=2)
+    data_model = model
+    loss_and_accuracy = data_model.evaluate(X_test, Y_test, verbose=2)
 
     print("Test Loss", loss_and_accuracy[0])
     print("Test Accuracy", loss_and_accuracy[1])
