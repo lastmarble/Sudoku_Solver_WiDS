@@ -7,10 +7,6 @@ from keras.utils import np_utils
 
 def predict(test_data_x, samples):
     (X_train, y_train), (X_test, y_test) = mnist.load_data()
-    # print("X_train shape", X_train.shape)
-    # print("y_train shape", y_train.shape)
-    # print("X_test shape", X_test.shape)
-    # print("y_test shape", y_test.shape)
 
     # reshaping image matrix
     X_train = X_train.reshape(60000, 784)
@@ -25,15 +21,11 @@ def predict(test_data_x, samples):
     X_test /= 255
     test_data_x /= 255
 
-    # print("Train matrix shape", X_train.shape)
-    # print("Test matrix shape", X_test.shape)
 
     # one-hot encoding
     n_classes = 10
-    # print("Shape before one-hot encoding: ", y_train.shape)
     Y_train = np_utils.to_categorical(y_train, n_classes)
     Y_test = np_utils.to_categorical(y_test, n_classes)
-    # print("Shape after one-hot encoding: ", Y_train.shape)
 
     # sequential model with 2 hidden layers
     model = Sequential()
@@ -73,7 +65,7 @@ def predict_image(char):
     image = cv2.imread(char)
     cv2.imshow("image", image)
     cv2.waitKey(0)
-    # BGR -> RGB
+    # BGR -> Gray
     img = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     img = imutils.resize(img, width=28)
     img = img.reshape(1, 28, 28, 1)
